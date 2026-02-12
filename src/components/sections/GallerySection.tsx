@@ -23,7 +23,7 @@ export function GallerySection({ images }: GallerySectionProps) {
     >
       <div className="container mx-auto max-w-6xl px-4">
         <div className="section-frame mb-8 p-6 text-center md:p-8">
-          <p className="text-xs uppercase tracking-[0.3em] text-sandstone-text/60">Fresh this week</p>
+          <p className="badge-sandstone mx-auto">Fresh this week</p>
           <h2 className="font-heading text-3xl font-bold text-sandstone-navy md:text-4xl">
             {GALLERY_TITLE}
           </h2>
@@ -67,7 +67,7 @@ export function GallerySection({ images }: GallerySectionProps) {
                       {img.stats && <p className="text-xs text-white/80">{img.stats}</p>}
                     </div>
                     {img.price && (
-                      <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-semibold">
+                      <span className="badge-sandstone-dark px-3 py-1 text-[11px] normal-case tracking-[0.08em]">
                         {img.price}
                       </span>
                     )}

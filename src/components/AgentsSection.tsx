@@ -79,7 +79,7 @@ export function AgentsSection({ agents = AGENTS }: AgentsSectionProps) {
 
                 {agent.about && (
                   <div className="mt-4 rounded-xl border border-sandstone-base/40 bg-white/55 p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-sandstone-navy/70">
+                    <p className="badge-sandstone text-[10px]">
                       About Me
                     </p>
                     <p className="mt-1 text-sm leading-relaxed text-sandstone-text/85">{agent.about}</p>
@@ -114,7 +114,7 @@ export function AgentsSection({ agents = AGENTS }: AgentsSectionProps) {
                     {agent.specialties.map((item) => (
                       <span
                         key={`${agent.name}-${item}`}
-                        className="rounded-full border border-sandstone-base/50 bg-sandstone-base/35 px-2.5 py-1 text-xs font-medium text-sandstone-navy"
+                        className="badge-sandstone-chip"
                       >
                         {item}
                       </span>
@@ -132,7 +132,7 @@ export function AgentsSection({ agents = AGENTS }: AgentsSectionProps) {
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full border border-sandstone-base/50 bg-white/65 px-3 py-1.5 text-xs text-sandstone-text/80 transition hover:border-sandstone-bronze hover:text-sandstone-bronze"
+                          className="badge-sandstone-chip gap-1.5 hover:-translate-y-px"
                         >
                           <Icon className="h-3.5 w-3.5" aria-hidden />
                           {social.handle ?? social.platform}

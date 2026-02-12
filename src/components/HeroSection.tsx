@@ -53,7 +53,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/75 backdrop-blur-sm">
+          <p className="badge-sandstone-dark w-fit text-white/90">
             El Paso · Fort Bliss · Luxury · Relocation
           </p>
           <h1 className="font-heading text-4xl font-bold leading-tight text-sandstone-base sm:text-5xl lg:text-6xl">
@@ -66,7 +66,7 @@ export function HeroSection() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
                 key={HERO_ROTATING_POINTS[activePoint]}
-                className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sandstone-base backdrop-blur-md"
+                className="badge-sandstone-dark"
                 initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
@@ -134,7 +134,7 @@ export function HeroSection() {
                     <p className="font-semibold">Featured cinematic tour</p>
                     <p className="text-[11px]">Updated weekly with new releases</p>
                   </div>
-                  <span className="flex items-center gap-1 rounded-full bg-white/15 px-2 py-1 text-[11px] font-semibold text-white">
+                  <span className="badge-sandstone-dark gap-1 px-2.5 py-1 text-[11px] normal-case tracking-[0.1em] text-white">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sandstone-base" aria-hidden /> Now Showing
                   </span>
                 </div>

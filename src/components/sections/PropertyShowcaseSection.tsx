@@ -15,7 +15,7 @@ export function PropertyShowcaseSection({ properties }: PropertyShowcaseSectionP
       <div className="container mx-auto max-w-6xl px-4">
         <div className="section-frame flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-7">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-sandstone-text/60">Featured listings</p>
+            <p className="badge-sandstone">Featured listings</p>
             <h2 className="font-heading text-3xl font-bold text-sandstone-navy md:text-4xl">
               Featured Properties
             </h2>

@@ -34,11 +34,11 @@ export function PropertyCard({ property }: PropertyCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute left-3 top-3 rounded-full border border-white/35 bg-sandstone-navy/85 px-3 py-1.5 text-sm font-semibold text-white shadow-lg backdrop-blur-sm">
+        <div className="badge-sandstone-price absolute left-3 top-3">
           {price}
         </div>
         {featured && (
-          <div className="absolute right-3 top-3 rounded-full border border-white/35 bg-sandstone-bronze/90 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <div className="badge-sandstone-accent absolute right-3 top-3 px-3 py-1 text-[10px] uppercase tracking-[0.16em]">
             Featured
           </div>
         )}
