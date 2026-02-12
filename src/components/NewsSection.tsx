@@ -15,14 +15,16 @@ export function NewsSection() {
       <div className="pointer-events-none absolute -bottom-28 left-8 h-56 w-56 rounded-full bg-white/14 blur-3xl" />
       <div className="container relative z-10 mx-auto max-w-5xl px-4">
         <div className="section-frame p-[28px] md:p-[35px]">
-          <motion.h2
-            className="font-heading text-2xl font-bold text-sandstone-gold mb-[35px] text-center md:text-3xl"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            News
-          </motion.h2>
+          <div className="flex justify-center mb-[35px]">
+            <motion.h2
+              className="font-heading text-2xl font-bold text-sandstone-gold md:text-3xl"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              News
+            </motion.h2>
+          </div>
           <div className="grid gap-[28px] sm:grid-cols-3">
             {NEWS_ITEMS.map((item, i) => (
               <motion.article

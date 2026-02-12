@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { STATS, GALLERY_IMAGES } from "@/constants/site";
@@ -13,6 +13,8 @@ const GALLERY_SLIDE_DURATION_MS = 4500;
 export function OurSuccessesSection() {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const galleryTotal = GALLERY_IMAGES.length;
+  const statsRef = useRef<HTMLUListElement>(null);
+  const statsInView = useInView(statsRef, { once: true, margin: "-40px", amount: 0.2 });
 
   const galleryNext = useCallback(() => {
     setGalleryIndex((i) => (i + 1) % galleryTotal);
@@ -47,6 +49,7 @@ export function OurSuccessesSection() {
           Our Successes
         </motion.h2>
         <motion.ul
+          ref={statsRef}
           className="mb-[49px] grid gap-[14px] rounded-2xl border border-white/15 bg-white/5 p-[21px] backdrop-blur-md sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-[21px] md:p-[28px]"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,6 +72,7 @@ export function OurSuccessesSection() {
                   suffix={stat.suffix}
                   delay={i * 0.04}
                   duration={0.6}
+                  triggerRoll={statsInView}
                 />
               </span>
               <span className="mt-1 block text-[11px] font-medium uppercase tracking-wider text-white/80 md:text-xs">

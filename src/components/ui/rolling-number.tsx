@@ -14,6 +14,8 @@ interface RollingNumberProps {
   delay?: number;
   /** Duration of roll (seconds) */
   duration?: number;
+  /** When true, roll runs immediately (e.g. from parent section in-view). When undefined, uses own useInView. */
+  triggerRoll?: boolean;
   className?: string;
 }
 
@@ -26,10 +28,12 @@ export function RollingNumber({
   suffix = "",
   delay = 0,
   duration = 0.6,
+  triggerRoll,
   className = "",
 }: RollingNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20px" });
+  const shouldRoll = triggerRoll !== undefined ? triggerRoll : isInView;
 
   /* Start with "9" in view (y: -9em), roll to target digit when in view */
   const startY = -9;
@@ -45,7 +49,7 @@ export function RollingNumber({
         <motion.span
           className="inline-flex flex-col"
           initial={{ y: `${startY}em` }}
-          animate={isInView ? { y: `${endY}em` } : { y: `${startY}em` }}
+          animate={shouldRoll ? { y: `${endY}em` } : { y: `${startY}em` }}
           transition={{
             delay,
             duration,
@@ -78,6 +82,8 @@ interface RollingStatValueProps {
   suffix?: string;
   delay?: number;
   duration?: number;
+  /** When true, all digits roll (e.g. from parent section in-view). Omit to use per-digit useInView. */
+  triggerRoll?: boolean;
   className?: string;
 }
 
@@ -91,6 +97,7 @@ export function RollingStatValue({
   suffix = "",
   delay = 0,
   duration = 0.6,
+  triggerRoll,
   className = "",
 }: RollingStatValueProps) {
   return (
@@ -101,6 +108,7 @@ export function RollingStatValue({
             digit={digit}
             delay={delay + i * 0.06}
             duration={duration}
+            triggerRoll={triggerRoll}
           />
           {commaAfterIndex != null && i === commaAfterIndex - 1 && i < rollDigits.length - 1 ? (
             <span aria-hidden>,</span>
