@@ -14,28 +14,37 @@ export function SiteHeader() {
   const [mobileMenuTop, setMobileMenuTop] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
 
+  const updateMenuTop = () => {
+    const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0;
+    setMobileMenuTop(headerHeight);
+  };
+
   useEffect(() => {
     if (!isMenuOpen) return;
     const { style } = document.body;
     const originalOverflow = style.overflow;
-    const originalTouchAction = style.touchAction;
     style.overflow = "hidden";
-    style.touchAction = "none";
     return () => {
       style.overflow = originalOverflow;
-      style.touchAction = originalTouchAction;
     };
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const updateMenuTop = () => {
-      const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0;
-      setMobileMenuTop(headerHeight);
-    };
-
     updateMenuTop();
+
+    const headerElement = headerRef.current;
+    if (!headerElement) return;
+
+    const resizeObserver = new ResizeObserver(updateMenuTop);
+    resizeObserver.observe(headerElement);
     window.addEventListener("resize", updateMenuTop);
-    return () => window.removeEventListener("resize", updateMenuTop);
+    window.addEventListener("orientationchange", updateMenuTop);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateMenuTop);
+      window.removeEventListener("orientationchange", updateMenuTop);
+    };
   }, []);
 
   useEffect(() => {
@@ -78,6 +87,10 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => {
+    updateMenuTop();
+    setIsMenuOpen((open) => !open);
+  };
 
   return (
     <header
@@ -173,7 +186,7 @@ export function SiteHeader() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav"
-          onClick={() => setIsMenuOpen((open) => !open)}
+          onClick={toggleMenu}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>

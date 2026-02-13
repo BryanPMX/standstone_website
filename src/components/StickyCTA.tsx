@@ -34,7 +34,7 @@ export function StickyCTA() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ type: "spring", stiffness: 380, damping: 28 }}
-          className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 right-4 z-[60] flex flex-col gap-2 sm:bottom-4 sm:left-auto sm:right-4"
+          className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 right-4 z-[35] flex flex-col gap-2 sm:bottom-4 sm:left-auto sm:right-4 sm:z-[60]"
         >
           <Link
             href={`tel:${SITE_CONTACT.phoneRaw}`}
