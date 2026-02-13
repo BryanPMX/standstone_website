@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollPositionRef = useRef(0);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -33,13 +34,16 @@ export function SiteHeader() {
     style.width = "100%";
 
     return () => {
+      const scrollY = scrollPositionRef.current;
       style.overflow = originalOverflow;
       style.position = originalPosition;
       style.top = originalTop;
       style.left = originalLeft;
       style.right = originalRight;
       style.width = originalWidth;
-      window.scrollTo(0, scrollPositionRef.current);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
     };
   }, [isMenuOpen]);
 
@@ -72,6 +76,16 @@ export function SiteHeader() {
     window.addEventListener("hashchange", closeOnHashChange);
     return () => window.removeEventListener("hashchange", closeOnHashChange);
   }, []);
+
+  const prevMenuOpenRef = useRef(false);
+  useEffect(() => {
+    if (prevMenuOpenRef.current && !isMenuOpen) {
+      requestAnimationFrame(() => {
+        menuButtonRef.current?.focus({ preventScroll: true });
+      });
+    }
+    prevMenuOpenRef.current = isMenuOpen;
+  }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
   const toggleMenu = () => setIsMenuOpen((open) => !open);
@@ -164,6 +178,7 @@ export function SiteHeader() {
           </Link>
         </Button>
         <button
+          ref={menuButtonRef}
           type="button"
           className="p-2 text-white/90 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy/80 md:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -183,7 +198,7 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 bottom-0 top-16 z-[70] bg-gradient-to-b from-sandstone-navy via-sandstone-navy/95 to-sandstone-navy/90 backdrop-blur-xl md:hidden"
+            className="fixed inset-x-0 bottom-0 top-16 z-[70] touch-none bg-gradient-to-b from-sandstone-navy via-sandstone-navy/95 to-sandstone-navy/90 backdrop-blur-xl md:hidden"
             onClick={closeMenu}
           >
             <motion.div
@@ -192,7 +207,8 @@ export function SiteHeader() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -12, opacity: 0 }}
               transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.7 }}
-              className="flex h-full flex-col gap-5 overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:gap-6 sm:px-4 sm:pt-6"
+              className="flex touch-auto h-full flex-col gap-5 overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:gap-6 sm:px-4 sm:pt-6"
+              style={{ touchAction: "pan-y" }}
               id="mobile-nav"
               role="dialog"
               aria-modal="true"
