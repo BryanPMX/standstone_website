@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Mail, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE_NAV, HERO_CTA } from "@/constants/site";
 import { cn } from "@/lib/utils";
+import { MobileMenuPortal } from "@/components/MobileMenuPortal";
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -190,75 +190,11 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            key="mobile-menu-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 bottom-0 top-16 z-[70] bg-sandstone-navy md:hidden"
-            onClick={closeMenu}
-          >
-            <motion.div
-              key="mobile-menu-panel"
-              initial={{ y: -16, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -12, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.7 }}
-              className="h-full overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-4 sm:pt-6"
-              id="mobile-nav"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Mobile navigation"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <ul className="list-none space-y-2 p-0 sm:space-y-2.5">
-                {SITE_NAV.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="block rounded-xl border border-white/20 bg-white/15 py-3 px-4 text-[15px] font-semibold text-white no-underline transition-colors hover:border-sandstone-base/80 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy sm:py-3.5 sm:text-base"
-                    >
-                      <span className="tracking-wide">{item.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 space-y-3 sm:mt-8">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full justify-center bg-sandstone-base text-sandstone-navy shadow-[0_18px_48px_-22px_rgba(255,210,175,0.95)] hover:-translate-y-[3px] hover:bg-sandstone-base/90"
-                >
-                  <Link href="/#contact" onClick={closeMenu}>
-                    {HERO_CTA}
-                  </Link>
-                </Button>
-
-                <Link
-                  href="/#contact"
-                  onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/15 py-3 px-4 text-base font-medium text-white no-underline transition-colors hover:border-sandstone-base/80 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
-                >
-                  <Mail className="h-4 w-4" aria-hidden />
-                  <span>Contact Us</span>
-                </Link>
-              </div>
-
-              <div className="mt-8 space-y-1 text-sm text-white/70 sm:mt-10">
-                <p className="font-semibold text-white/90">Sandstone Real Estate Team</p>
-                <p className="leading-relaxed">
-                  Luxury guidance, relocation expertise, and concierge support — now one tap away.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenuPortal
+        isOpen={isMenuOpen}
+        onClose={closeMenu}
+        navItems={SITE_NAV}
+      />
     </header>
   );
 }
