@@ -102,11 +102,11 @@ export function MobileMenuPortal({
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className="group relative isolate block overflow-hidden rounded-xl border border-sandstone-base/70 bg-gradient-to-r from-[#c79d6d]/95 via-sandstone-base/92 to-sandstone-navy/92 px-4 py-3 text-[15px] font-semibold tracking-[0.06em] text-white no-underline shadow-[0_16px_30px_-22px_rgba(183,150,120,0.72)] transition-all duration-300 hover:-translate-y-px hover:border-sandstone-base hover:shadow-[0_24px_42px_-20px_rgba(183,150,120,0.82)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
+                  className="group relative isolate block overflow-hidden rounded-xl border border-white/22 bg-gradient-to-r from-sandstone-navy/94 via-[#475fa0]/90 to-[#c6a57f]/90 px-4 py-3 text-[15px] font-semibold tracking-[0.03em] text-white no-underline shadow-[0_14px_28px_-22px_rgba(37,52,113,0.62)] transition-all duration-300 hover:-translate-y-px hover:border-sandstone-base/70 hover:shadow-[0_20px_34px_-22px_rgba(183,150,120,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
                 >
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-y-0 -left-2/3 w-[58%] -skew-x-12 bg-gradient-to-r from-white/0 via-[#ffe8c7]/65 to-white/0 opacity-0 transition-all duration-700 group-hover:left-[132%] group-hover:opacity-100 group-focus-visible:left-[132%] group-focus-visible:opacity-100"
+                    className="pointer-events-none absolute inset-y-0 -left-2/3 w-[58%] -skew-x-12 bg-gradient-to-r from-white/0 via-[#ffe8c7]/45 to-white/0 opacity-0 transition-all duration-700 group-hover:left-[132%] group-hover:opacity-100 group-focus-visible:left-[132%] group-focus-visible:opacity-100"
                   />
                   <span className="relative z-10">{item.label}</span>
                 </Link>
