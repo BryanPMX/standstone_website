@@ -198,7 +198,7 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 bottom-0 top-16 z-[70] touch-none bg-gradient-to-b from-sandstone-navy via-sandstone-navy/95 to-sandstone-navy/90 backdrop-blur-xl md:hidden"
+            className="fixed inset-x-0 bottom-0 top-16 z-[70] touch-none bg-sandstone-navy md:hidden"
             onClick={closeMenu}
           >
             <motion.div
@@ -207,7 +207,7 @@ export function SiteHeader() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -12, opacity: 0 }}
               transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.7 }}
-              className="flex touch-auto h-full flex-col gap-5 overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:gap-6 sm:px-4 sm:pt-6"
+              className="flex min-h-0 touch-auto h-full flex-col gap-5 overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:gap-6 sm:px-4 sm:pt-6"
               style={{ touchAction: "pan-y" }}
               id="mobile-nav"
               role="dialog"
@@ -215,13 +215,13 @@ export function SiteHeader() {
               aria-label="Mobile navigation"
               onClick={(event) => event.stopPropagation()}
             >
-              <div className="space-y-2">
+              <div className="flex shrink-0 flex-col gap-2">
                 {SITE_NAV.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-white/5 px-3.5 py-2.5 text-[15px] font-semibold text-white/90 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.9)] transition-all duration-300 ease-out hover:-translate-y-[2px] hover:border-sandstone-base/60 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy/90 sm:px-4 sm:py-3 sm:text-base"
+                    className="group flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-3.5 py-2.5 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:border-sandstone-base/70 hover:bg-white/15 hover:text-sandstone-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy sm:px-4 sm:py-3 sm:text-base"
                   >
                     <span className="tracking-wide">{item.label}</span>
                     <span
@@ -248,7 +248,7 @@ export function SiteHeader() {
                 <Link
                   href="/#contact"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/8 bg-white/5 px-4 py-3 text-base font-medium text-white/90 transition-all duration-300 hover:-translate-y-[2px] hover:border-sandstone-base/60 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy/90"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-base font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-sandstone-base/70 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
                 >
                   <Mail className="h-4 w-4" aria-hidden />
                   <span>Contact Us</span>
