@@ -198,7 +198,7 @@ export function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 bottom-0 top-16 z-[70] touch-none bg-sandstone-navy md:hidden"
+            className="fixed inset-x-0 bottom-0 top-16 z-[70] bg-sandstone-navy md:hidden"
             onClick={closeMenu}
           >
             <motion.div
@@ -207,34 +207,28 @@ export function SiteHeader() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -12, opacity: 0 }}
               transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.7 }}
-              className="flex min-h-0 touch-auto h-full flex-col gap-5 overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:gap-6 sm:px-4 sm:pt-6"
-              style={{ touchAction: "pan-y" }}
+              className="h-full overflow-y-auto overscroll-contain px-3 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-4 sm:pt-6"
               id="mobile-nav"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
               onClick={(event) => event.stopPropagation()}
             >
-              <div className="flex shrink-0 flex-col gap-2">
+              <ul className="list-none space-y-2 p-0 sm:space-y-2.5">
                 {SITE_NAV.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMenu}
-                    className="group flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-3.5 py-2.5 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:border-sandstone-base/70 hover:bg-white/15 hover:text-sandstone-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy sm:px-4 sm:py-3 sm:text-base"
-                  >
-                    <span className="tracking-wide">{item.label}</span>
-                    <span
-                      aria-hidden
-                      className="text-sm text-sandstone-base/80 transition-transform duration-300 group-hover:translate-x-1"
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="block rounded-xl border border-white/20 bg-white/15 py-3 px-4 text-[15px] font-semibold text-white no-underline transition-colors hover:border-sandstone-base/80 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy sm:py-3.5 sm:text-base"
                     >
-                      ↗
-                    </span>
-                  </Link>
+                      <span className="tracking-wide">{item.label}</span>
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <div className="space-y-3">
+              <div className="mt-6 space-y-3 sm:mt-8">
                 <Button
                   asChild
                   size="lg"
@@ -248,16 +242,16 @@ export function SiteHeader() {
                 <Link
                   href="/#contact"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-base font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-sandstone-base/70 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/15 py-3 px-4 text-base font-medium text-white no-underline transition-colors hover:border-sandstone-base/80 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sandstone-base focus-visible:ring-offset-2 focus-visible:ring-offset-sandstone-navy"
                 >
                   <Mail className="h-4 w-4" aria-hidden />
                   <span>Contact Us</span>
                 </Link>
               </div>
 
-              <div className="mt-auto space-y-1 text-sm text-white/60">
-                <p className="font-semibold text-white/80">Sandstone Real Estate Team</p>
-                <p className="leading-relaxed text-white/60">
+              <div className="mt-8 space-y-1 text-sm text-white/70 sm:mt-10">
+                <p className="font-semibold text-white/90">Sandstone Real Estate Team</p>
+                <p className="leading-relaxed">
                   Luxury guidance, relocation expertise, and concierge support — now one tap away.
                 </p>
               </div>
