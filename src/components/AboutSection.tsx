@@ -84,7 +84,7 @@ export function AboutSection() {
                 </p>
               </div>
 
-              <div className="relative mt-[21px] space-y-[14px]">
+              <div className="relative mt-auto space-y-[14px] pt-[28px]">
                 <div className="grid gap-[14px] sm:grid-cols-2">
                   <a
                     href={`tel:${SITE_CONTACT.phoneRaw}`}
