@@ -50,23 +50,15 @@ export function SiteHeader() {
   useEffect(() => {
     if (!isMenuOpen) return;
 
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsMenuOpen(false);
-      }
-    };
-
     const closeOnDesktop = () => {
       if (window.innerWidth >= 768) {
         setIsMenuOpen(false);
       }
     };
 
-    window.addEventListener("keydown", closeOnEscape);
     window.addEventListener("resize", closeOnDesktop);
 
     return () => {
-      window.removeEventListener("keydown", closeOnEscape);
       window.removeEventListener("resize", closeOnDesktop);
     };
   }, [isMenuOpen]);
@@ -133,11 +125,11 @@ export function SiteHeader() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="group relative isolate inline-flex items-center px-1 py-1 text-base font-medium text-white/90 transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:text-sandstone-base focus-visible:-translate-y-px focus-visible:text-sandstone-base focus-visible:outline-none"
+                className="group relative isolate inline-flex items-center px-1 py-1 text-base font-medium text-white/90 transition-all [transition-duration:420ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:text-sandstone-base focus-visible:-translate-y-px focus-visible:text-sandstone-base focus-visible:outline-none"
               >
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-x-[-0.45rem] inset-y-[-0.18rem] z-0 scale-[0.985] rounded-full bg-gradient-to-r from-white/[0.01] via-white/[0.1] to-white/[0.01] opacity-0 transition-all duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
+                  className="pointer-events-none absolute inset-x-[-0.45rem] inset-y-[-0.18rem] z-0 scale-[0.985] rounded-full bg-gradient-to-r from-white/[0.01] via-white/[0.1] to-white/[0.01] opacity-0 transition-all [transition-duration:420ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
                 />
                 <span
                   aria-hidden
@@ -167,7 +159,7 @@ export function SiteHeader() {
           asChild
           variant="outline"
           size="sm"
-          className="group relative hidden overflow-hidden border-sandstone-bronze/85 text-sandstone-base shadow-[0_8px_20px_-14px_rgba(0,0,0,0.65)] transition-all duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-sandstone-base hover:bg-sandstone-bronze/25 hover:text-white hover:shadow-[0_20px_34px_-18px_rgba(183,150,120,0.82)] lg:inline-flex"
+          className="group relative hidden overflow-hidden border-sandstone-bronze/85 text-sandstone-base shadow-[0_8px_20px_-14px_rgba(0,0,0,0.65)] transition-all [transition-duration:460ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-sandstone-base hover:bg-sandstone-bronze/25 hover:text-white hover:shadow-[0_20px_34px_-18px_rgba(183,150,120,0.82)] lg:inline-flex"
         >
           <Link href="/#contact">
             <span

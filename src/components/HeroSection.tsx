@@ -79,7 +79,7 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               href="/#contact"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-sandstone-maroon via-sandstone-navy to-[#70543c] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-black/25 transition-all duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:shadow-[0_28px_46px_-18px_rgba(37,52,113,0.8)] focus-visible:-translate-y-[3px] focus-visible:outline-none"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-sandstone-maroon via-sandstone-navy to-[#70543c] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-black/25 transition-all [transition-duration:460ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px] hover:shadow-[0_28px_46px_-18px_rgba(37,52,113,0.8)] focus-visible:-translate-y-[3px] focus-visible:outline-none"
             >
               <span
                 aria-hidden
@@ -87,20 +87,20 @@ export function HeroSection() {
               />
               <span className="relative z-10">{HERO_CTA}</span>
               <ChevronRight
-                className="relative z-10 h-4 w-4 transition-transform duration-[420ms] group-hover:translate-x-1 group-hover:scale-110 group-focus-visible:translate-x-1 group-focus-visible:scale-110"
+                className="relative z-10 h-4 w-4 transition-transform [transition-duration:420ms] group-hover:translate-x-1 group-hover:scale-110 group-focus-visible:translate-x-1 group-focus-visible:scale-110"
                 aria-hidden
               />
             </Link>
             <Link
               href="/#gallery"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/35 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white/90 backdrop-blur-sm transition-all duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-sandstone-base hover:text-white hover:shadow-[0_24px_38px_-24px_rgba(255,255,255,0.95)] focus-visible:-translate-y-[2px] focus-visible:border-sandstone-base focus-visible:text-white focus-visible:outline-none"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/35 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-white/90 backdrop-blur-sm transition-all [transition-duration:460ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-sandstone-base hover:text-white hover:shadow-[0_24px_38px_-24px_rgba(255,255,255,0.95)] focus-visible:-translate-y-[2px] focus-visible:border-sandstone-base focus-visible:text-white focus-visible:outline-none"
             >
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
               />
               <PlayCircle
-                className="relative z-10 h-4 w-4 transition-transform duration-[420ms] group-hover:scale-125 group-focus-visible:scale-125"
+                className="relative z-10 h-4 w-4 transition-transform [transition-duration:420ms] group-hover:scale-125 group-focus-visible:scale-125"
                 aria-hidden
               />
               <span className="relative z-10">Tour Listings</span>

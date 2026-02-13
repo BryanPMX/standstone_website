@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Mail } from "lucide-react";
@@ -46,17 +46,18 @@ export function MobileMenuPortal({
     return null;
   }
 
-  const overlayStyle: React.CSSProperties = {
+  const overlayStyle: CSSProperties = {
     position: "fixed",
     left: 0,
-    right: 0,
     top: HEADER_HEIGHT_PX,
-    bottom: 0,
+    width: "100vw",
+    height: `calc(100dvh - ${HEADER_HEIGHT_PX}px)`,
     zIndex: 70,
     backgroundColor: "#253471", // sandstone-navy
   };
 
-  const panelStyle: React.CSSProperties = {
+  const panelStyle: CSSProperties = {
+    width: "100%",
     height: "100%",
     overflowY: "auto",
     WebkitOverflowScrolling: "touch",
