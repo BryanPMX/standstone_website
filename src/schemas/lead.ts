@@ -10,6 +10,12 @@ export const LeadSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone is required").max(30),
   message: z.string().max(2000).optional().default(""),
+  acceptPrivacyPolicy: z
+    .string()
+    .refine((v) => v === "on", { message: "You must accept the Privacy Policy." }),
+  acceptTermsConditions: z
+    .string()
+    .refine((v) => v === "on", { message: "You must accept the Terms and Conditions." }),
 });
 
 export type LeadSchemaType = z.infer<typeof LeadSchema>;

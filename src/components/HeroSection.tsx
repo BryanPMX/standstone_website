@@ -36,7 +36,6 @@ export function HeroSection() {
           loop
           playsInline
           className="h-full w-full object-cover"
-          poster="/hero-poster.jpg"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
@@ -124,7 +123,6 @@ export function HeroSection() {
                   loop
                   playsInline
                   className="h-full w-full object-cover"
-                  poster="/hero-poster.jpg"
                 >
                   <source src="/hero-video.mp4" type="video/mp4" />
                 </video>

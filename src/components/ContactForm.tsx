@@ -6,9 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 import { submitLead } from "@/actions/submit-lead";
 import type { SubmitLeadState } from "@/types";
-import { CONTACT_HEADLINE, CONTACT_SUBHEADLINE, CONTACT_CTA } from "@/constants/site";
+import {
+  CONTACT_HEADLINE,
+  CONTACT_SUBHEADLINE,
+  CONTACT_CTA,
+  PRIVACY_POLICY_HREF,
+  TERMS_AND_CONDITIONS_HREF,
+} from "@/constants/site";
 
 const initialState: SubmitLeadState | null = null;
 
@@ -153,6 +160,70 @@ export function ContactForm() {
                   {state.fieldErrors.message[0]}
                 </p>
               )}
+            </div>
+
+            <div className="space-y-4 rounded-lg border border-white/30 bg-white/10 p-4">
+              <p className="text-sm font-medium text-sandstone-text/90">
+                Before submitting, please accept:
+              </p>
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <label className="flex cursor-pointer items-start gap-3 text-sm text-sandstone-text/90">
+                  <input
+                    type="checkbox"
+                    name="acceptPrivacyPolicy"
+                    value="on"
+                    required
+                    disabled={isPending}
+                    className="mt-1 h-4 w-4 rounded border-sandstone-brown/50 text-sandstone-navy focus:ring-sandstone-bronze"
+                    aria-describedby="privacy-error"
+                  />
+                  <span>
+                    I have read and accept the{" "}
+                    <Link
+                      href={PRIVACY_POLICY_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-sandstone-navy underline underline-offset-2 hover:text-sandstone-bronze"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </span>
+                </label>
+                {state?.success === false && state.fieldErrors?.acceptPrivacyPolicy && (
+                  <p id="privacy-error" className="text-xs text-red-600">
+                    {state.fieldErrors.acceptPrivacyPolicy[0]}
+                  </p>
+                )}
+                <label className="flex cursor-pointer items-start gap-3 text-sm text-sandstone-text/90">
+                  <input
+                    type="checkbox"
+                    name="acceptTermsConditions"
+                    value="on"
+                    required
+                    disabled={isPending}
+                    className="mt-1 h-4 w-4 rounded border-sandstone-brown/50 text-sandstone-navy focus:ring-sandstone-bronze"
+                    aria-describedby="terms-error"
+                  />
+                  <span>
+                    I have read and accept the{" "}
+                    <Link
+                      href={TERMS_AND_CONDITIONS_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-sandstone-navy underline underline-offset-2 hover:text-sandstone-bronze"
+                    >
+                      Terms and Conditions
+                    </Link>
+                    .
+                  </span>
+                </label>
+                {state?.success === false && state.fieldErrors?.acceptTermsConditions && (
+                  <p id="terms-error" className="text-xs text-red-600">
+                    {state.fieldErrors.acceptTermsConditions[0]}
+                  </p>
+                )}
+              </div>
             </div>
 
               <Button

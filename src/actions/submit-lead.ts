@@ -20,6 +20,8 @@ export async function submitLead(
     email: formData.get("email") ?? "",
     phone: formData.get("phone") ?? "",
     message: formData.get("message") ?? "",
+    acceptPrivacyPolicy: formData.get("acceptPrivacyPolicy") ?? "",
+    acceptTermsConditions: formData.get("acceptTermsConditions") ?? "",
   };
 
   const parsed = LeadSchema.safeParse(raw);
@@ -43,7 +45,8 @@ export async function submitLead(
     };
   }
 
-  const result = await leadSubmissionService.submit(parsed.data, webhookUrl);
+  const { acceptPrivacyPolicy: _p, acceptTermsConditions: _t, ...leadPayload } = parsed.data;
+  const result = await leadSubmissionService.submit(leadPayload, webhookUrl);
 
   if (!result.ok) {
     return {

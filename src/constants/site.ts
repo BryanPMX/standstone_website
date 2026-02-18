@@ -186,6 +186,10 @@ export const CONTACT_SUBHEADLINE =
   "We'd be happy to help you find your dream home.";
 export const CONTACT_CTA = "SCHEDULE A VISIT";
 
+/** Links for contact form consent (required checkboxes). Documents live in public/. */
+export const PRIVACY_POLICY_HREF = "/privacy-policy.docx";
+export const TERMS_AND_CONDITIONS_HREF = "/terms-and-conditions.docx";
+
 export const FOOTER_CREDIT = "";
 export const FOOTER_BRAND = "Sandstone Real Estate Team - by Keller Williams";
 
