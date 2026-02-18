@@ -45,7 +45,13 @@ export async function submitLead(
     };
   }
 
-  const { acceptPrivacyPolicy: _p, acceptTermsConditions: _t, ...leadPayload } = parsed.data;
+  const leadPayload = {
+    firstName: parsed.data.firstName,
+    lastName: parsed.data.lastName,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    message: parsed.data.message,
+  };
   const result = await leadSubmissionService.submit(leadPayload, webhookUrl);
 
   if (!result.ok) {

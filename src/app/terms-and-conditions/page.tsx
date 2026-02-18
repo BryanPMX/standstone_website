@@ -45,25 +45,27 @@ function FallbackView({
   title: string;
 }) {
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12 text-center">
-      <h1 className="font-heading text-2xl font-bold text-sandstone-gold">
-        {title}
-      </h1>
-      <p className="mt-4 text-sandstone-text/90">
-        View the document in your browser (view only, no download).
-      </p>
-      <Link
-        href={`/api/documents/${doc}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-block rounded-full bg-sandstone-navy px-6 py-3 text-sm font-semibold text-white hover:bg-sandstone-maroon"
-      >
-        Open {title}
-      </Link>
-      <p className="mt-6 text-xs text-sandstone-text/70">
-        Opens in a new tab. Your browser may display or download the document
-        depending on your settings.
-      </p>
-    </div>
+    <section className="mx-auto max-w-3xl px-4 pb-14 pt-24 md:pb-16 md:pt-28">
+      <div className="section-frame rounded-3xl border-white/55 bg-gradient-to-br from-white/70 via-sandstone-base/50 to-sandstone-bronze/25 p-6 text-center sm:p-8">
+        <h1 className="font-heading text-2xl font-bold text-sandstone-gold md:text-3xl">
+          {title}
+        </h1>
+        <p className="mt-4 text-sandstone-text/90">
+          View the document in your browser (view only, no download link).
+        </p>
+        <Link
+          href={`/api/documents/${doc}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-block rounded-full bg-sandstone-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-sandstone-maroon"
+        >
+          Open {title}
+        </Link>
+        <p className="mt-6 text-xs text-sandstone-text/70">
+          Opens in a new tab. Your browser may still allow downloading based on
+          local settings.
+        </p>
+      </div>
+    </section>
   );
 }

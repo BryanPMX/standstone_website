@@ -24,6 +24,12 @@ export function ContactForm() {
     submitLead,
     initialState
   );
+  const hasConsentErrors =
+    state?.success === false &&
+    Boolean(
+      state.fieldErrors?.acceptPrivacyPolicy ||
+        state.fieldErrors?.acceptTermsConditions
+    );
 
   return (
     <section
@@ -163,10 +169,10 @@ export function ContactForm() {
             </div>
 
             <div className="space-y-4 rounded-lg border border-white/30 bg-white/10 p-4">
-              {(state?.success === false &&
-                (state.fieldErrors?.acceptPrivacyPolicy ?? state.fieldErrors?.acceptTermsConditions)) && (
+              {hasConsentErrors && (
                 <div
                   role="alert"
+                  aria-live="assertive"
                   className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800"
                 >
                   <p className="font-medium">
@@ -186,10 +192,10 @@ export function ContactForm() {
                     type="checkbox"
                     name="acceptPrivacyPolicy"
                     value="on"
-                    required
                     disabled={isPending}
                     className="mt-1 h-4 w-4 rounded border-sandstone-brown/50 text-sandstone-navy focus:ring-sandstone-bronze"
                     aria-describedby="privacy-error"
+                    aria-invalid={state?.success === false && Boolean(state.fieldErrors?.acceptPrivacyPolicy)}
                   />
                   <span>
                     I have read and accept the{" "}
@@ -214,10 +220,10 @@ export function ContactForm() {
                     type="checkbox"
                     name="acceptTermsConditions"
                     value="on"
-                    required
                     disabled={isPending}
                     className="mt-1 h-4 w-4 rounded border-sandstone-brown/50 text-sandstone-navy focus:ring-sandstone-bronze"
                     aria-describedby="terms-error"
+                    aria-invalid={state?.success === false && Boolean(state.fieldErrors?.acceptTermsConditions)}
                   />
                   <span>
                     I have read and accept the{" "}
