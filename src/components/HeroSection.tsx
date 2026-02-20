@@ -31,13 +31,13 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
 
   return (
     <section className="relative w-full overflow-hidden bg-[var(--sandstone-navy)]">
-      <div className="relative h-[46vh] min-h-[320px] w-full lg:h-[560px] lg:min-h-[560px]">
+      <div className="relative h-[46vh] min-h-[320px] w-full lg:h-[640px] lg:min-h-[640px]">
         <div className="relative h-full w-full">
           <Image
             src="/hero.webp"
             alt=""
             fill
-            className="object-cover object-[center_45%] lg:object-center"
+            className="object-cover object-[center_45%] lg:object-[center_42%]"
             sizes="100vw"
             priority
           />
@@ -48,7 +48,7 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
 
           <form
             onSubmit={handleSearch}
-            className="absolute left-1/2 top-[34%] z-10 hidden w-[460px] max-w-[calc(100%-2rem)] -translate-x-1/2 lg:block"
+            className="absolute left-1/2 top-[36%] z-10 hidden w-[500px] max-w-[calc(100%-2rem)] -translate-x-1/2 lg:block"
           >
             <div className="relative">
               <input
@@ -74,22 +74,21 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
             className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-[var(--sandstone-navy)]/50 via-60% to-[var(--sandstone-navy)] lg:hidden"
             aria-hidden
           />
+          <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-[36px] w-[172px] -translate-x-1/2 translate-y-1/2 lg:hidden">
+            <Image
+              src="/mobile-logo-hero.webp"
+              alt="Sandstone Real Estate Team"
+              fill
+              className="object-contain drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)]"
+              sizes="172px"
+              priority
+            />
+          </div>
         </div>
       </div>
 
-      <div className="bg-[var(--sandstone-navy)] px-4 pb-5 pt-0.5 lg:hidden">
-        <div className="pointer-events-none relative mx-auto h-[36px] w-[172px]">
-          <Image
-            src="/mobile-logo-hero.webp"
-            alt="Sandstone Real Estate Team"
-            fill
-            className="object-contain drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)]"
-            sizes="172px"
-            priority
-          />
-        </div>
-
-        <form onSubmit={handleSearch} className="mx-auto mt-3 w-full max-w-sm">
+      <div className="bg-[var(--sandstone-navy)] px-4 pb-5 pt-6 lg:hidden">
+        <form onSubmit={handleSearch} className="mx-auto mt-2 w-full max-w-sm">
           <input
             type="search"
             name="search"
