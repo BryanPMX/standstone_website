@@ -71,16 +71,16 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
             </div>
           </form>
           <div
-            className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-[var(--sandstone-navy)]/50 via-60% to-[var(--sandstone-navy)] lg:hidden"
+            className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent via-[var(--sandstone-navy)]/50 via-60% to-[var(--sandstone-navy)] lg:hidden"
             aria-hidden
           />
-          <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-[36px] w-[172px] -translate-x-1/2 translate-y-1/2 lg:hidden">
+          <div className="pointer-events-none absolute bottom-5 left-1/2 z-20 h-[44px] w-[206px] -translate-x-1/2 lg:hidden">
             <Image
               src="/mobile-logo-hero.webp"
               alt="Sandstone Real Estate Team"
               fill
               className="object-contain drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)]"
-              sizes="172px"
+              sizes="206px"
               priority
             />
           </div>
@@ -88,7 +88,7 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
       </div>
 
       <div className="bg-[var(--sandstone-navy)] px-4 pb-5 pt-6 lg:hidden">
-        <form onSubmit={handleSearch} className="mx-auto mt-2 w-full max-w-sm">
+        <form onSubmit={handleSearch} className="mx-auto mt-5 w-full max-w-sm">
           <input
             type="search"
             name="search"
@@ -101,7 +101,7 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
 
           <button
             type="submit"
-            className="mt-2.5 w-full rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3 font-semibold text-white transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)] focus:ring-offset-2 focus:ring-offset-[var(--sandstone-navy)]"
+            className="mx-auto mt-2.5 block w-[72%] max-w-[220px] rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3 font-semibold text-white transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)] focus:ring-offset-2 focus:ring-offset-[var(--sandstone-navy)]"
           >
             Search
           </button>
