@@ -33,14 +33,19 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
     <section className="relative w-full overflow-hidden bg-[var(--sandstone-navy)]">
       <div className="relative h-[46vh] min-h-[320px] w-full lg:h-[640px] lg:min-h-[640px]">
         <div className="relative h-full w-full">
-          <Image
-            src="/hero.webp"
-            alt=""
-            fill
-            className="object-cover object-[center_45%] lg:object-[center_42%]"
-            sizes="100vw"
-            priority
-          />
+          <picture className="absolute inset-0 block h-full w-full">
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/desktop%20hero.webp"
+              type="image/webp"
+            />
+            <img
+              src="/mobile%20hero.webp"
+              alt=""
+              className="h-full w-full object-cover object-[center_45%] lg:object-[center_40%]"
+              fetchPriority="high"
+            />
+          </picture>
           <div
             className="absolute inset-0 bg-gradient-to-t from-[var(--sandstone-navy)]/62 via-[var(--sandstone-navy)]/26 to-[var(--sandstone-navy)]/10 lg:from-[var(--sandstone-navy)]/70 lg:via-[var(--sandstone-navy)]/30 lg:to-[var(--sandstone-navy)]/12"
             aria-hidden
@@ -48,7 +53,7 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
 
           <form
             onSubmit={handleSearch}
-            className="absolute left-1/2 top-[36%] z-10 hidden w-[500px] max-w-[calc(100%-2rem)] -translate-x-1/2 lg:block"
+            className="absolute left-1/2 top-[35%] z-10 hidden w-[548px] max-w-[calc(100%-3rem)] -translate-x-1/2 lg:block xl:top-[36%]"
           >
             <div className="relative">
               <input
