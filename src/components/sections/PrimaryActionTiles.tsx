@@ -23,7 +23,7 @@ const TILES = [
 
 export function PrimaryActionTiles() {
   return (
-    <section className="bg-[var(--sandstone-beige)] py-10 md:py-0">
+    <section className="bg-[var(--sandstone-beige)] py-10 md:py-3">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-4 md:hidden">
           {TILES.map((tile) => (
@@ -55,15 +55,15 @@ export function PrimaryActionTiles() {
               <li key={tile.href} className="relative">
                 {index < TILES.length - 1 && (
                   <span
-                    className="absolute right-0 top-1/2 h-12 w-px -translate-y-1/2 bg-[var(--sandstone-navy)]/30"
+                    className="absolute right-0 top-1/2 h-16 w-px -translate-y-1/2 bg-[var(--sandstone-navy)]/30"
                     aria-hidden
                   />
                 )}
                 <Link
                   href={tile.href}
-                  className="group flex flex-col items-center justify-center gap-2 py-4 text-[var(--sandstone-charcoal)] transition hover:bg-white/18 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-navy)]"
+                  className="group flex min-h-[8.75rem] flex-col items-center justify-center gap-3 py-6 text-[var(--sandstone-charcoal)] transition hover:bg-white/18 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-navy)]"
                 >
-                  <div className="relative h-10 w-10 shrink-0">
+                  <div className="relative h-14 w-14 shrink-0 lg:h-16 lg:w-16">
                     <Image
                       src={tile.icon}
                       alt=""
@@ -71,7 +71,7 @@ export function PrimaryActionTiles() {
                       className="object-contain"
                     />
                   </div>
-                  <span className="text-sm font-semibold tracking-wide">
+                  <span className="text-sm font-semibold leading-tight tracking-wide">
                     {tile.label}
                   </span>
                 </Link>
