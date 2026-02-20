@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "Sandstone Real Estate Group | El Paso",
   description:
     "Luxury. Lifestyle. Legacy. Redefining real estate in El Paso and the Southwest through trust, lifestyle, and innovation.",
+  icons: {
+    icon: "/mobile-header-logo.webp",
+    shortcut: "/mobile-header-logo.webp",
+    apple: "/mobile-header-logo.webp",
+  },
   openGraph: {
     title: "Sandstone Real Estate Group",
     description:
