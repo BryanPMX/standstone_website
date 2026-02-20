@@ -32,23 +32,13 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
   return (
     <section className="relative w-full overflow-hidden bg-[var(--sandstone-navy)]">
       <div className="relative h-[46vh] min-h-[320px] w-full lg:h-[560px] lg:min-h-[560px]">
-        <Image
-          src="/hero.webp"
-          alt=""
-          fill
-          className="object-cover opacity-35 blur-[1px]"
-          sizes="100vw"
-          priority
-          aria-hidden
-        />
-
-        <div className="relative h-full w-full lg:mx-auto lg:max-w-6xl">
+        <div className="relative h-full w-full">
           <Image
             src="/hero.webp"
             alt=""
             fill
-            className="object-cover object-center lg:object-[center_55%]"
-            sizes="(max-width: 1024px) 100vw, 1200px"
+            className="object-cover object-center"
+            sizes="100vw"
             priority
           />
           <div

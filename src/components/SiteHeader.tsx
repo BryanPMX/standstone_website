@@ -78,26 +78,20 @@ export function SiteHeader({ overlayDesktop = false }: SiteHeaderProps) {
           : "sticky top-0 border-b border-white/10 bg-[var(--sandstone-navy)]"
       )}
     >
-      <div
-        className={cn(
-          "mx-auto flex h-14 w-full max-w-6xl items-center px-4 lg:h-24 lg:px-6",
-          overlayDesktop &&
-            "lg:mt-4 lg:h-20 lg:rounded-full lg:border lg:border-white/25 lg:bg-[var(--sandstone-navy)]/32 lg:backdrop-blur-md"
-        )}
-      >
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center px-4 lg:h-24 lg:px-6">
         <div className="flex w-full items-center justify-between lg:hidden">
           <Link
             href="/"
             className="flex items-center gap-2 text-[var(--sandstone-sand-gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-sand-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--sandstone-navy)]"
             aria-label="Sandstone Real Estate Group - Home"
           >
-            <div className="relative h-7 w-28 shrink-0">
+            <div className="relative h-9 w-9 shrink-0">
               <Image
-                src="/logo-hero.webp"
+                src="/logo-mark.webp"
                 alt="Sandstone Real Estate Group"
                 fill
-                className="object-contain"
-                sizes="112px"
+                className="object-contain brightness-110 contrast-110"
+                sizes="36px"
                 priority
               />
             </div>
@@ -140,13 +134,13 @@ export function SiteHeader({ overlayDesktop = false }: SiteHeaderProps) {
             className="flex items-center gap-2 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-sand-gold)]"
             aria-label="Sandstone Real Estate Group - Home"
           >
-            <div className="relative h-16 w-[190px] shrink-0">
+            <div className="relative h-[72px] w-[250px] shrink-0">
               <Image
                 src="/logo-hero.webp"
                 alt="Sandstone Real Estate Group"
                 fill
                 className="object-contain"
-                sizes="190px"
+                sizes="250px"
                 priority
               />
             </div>
