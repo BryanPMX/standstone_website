@@ -41,10 +41,10 @@ export default async function ListingPage({ params }: PageProps) {
       <main className="min-h-screen bg-[var(--sandstone-off-white)] pb-16">
         <div className="container mx-auto max-w-4xl px-4 pt-8">
           <Link
-            href="/#listings"
+            href="/listings"
             className="text-sm font-medium text-[var(--sandstone-sand-gold)] hover:underline"
           >
-            ← Back to Sandstone Collection
+            ← Back to listings
           </Link>
           <div className="mt-6 overflow-hidden rounded-2xl bg-white shadow-lg">
             <div className="relative aspect-[16/10] w-full">

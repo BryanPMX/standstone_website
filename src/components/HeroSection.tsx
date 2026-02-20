@@ -2,14 +2,22 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { HERO_SLOGAN } from "@/constants/site";
 
 const SEARCH_PLACEHOLDER = "Enter an address, neighborhood in EP";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  initialQuery?: string;
+}
+
+export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,7 +59,7 @@ export function HeroSection() {
             />
           </div>
           <p className="mt-2 font-heading text-lg font-bold tracking-wide text-[var(--sandstone-sand-gold)] sm:text-xl">
-            Luxury. Lifestyle. Legacy.
+            {HERO_SLOGAN}
           </p>
         </div>
 
@@ -60,7 +68,6 @@ export function HeroSection() {
           className="relative z-10 mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-center sm:rounded-full sm:bg-white/95 sm:py-1 sm:pr-1 sm:shadow-lg"
         >
           <input
-            ref={inputRef}
             type="search"
             name="search"
             value={query}

@@ -1,15 +1,20 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
 import type { PropertyCard } from "@/types";
+import { ListingCard } from "@/components/properties";
 
 interface FeaturedListingsSectionProps {
   properties: PropertyCard[];
+  searchQuery?: string;
 }
 
-export function FeaturedListingsSection({ properties }: FeaturedListingsSectionProps) {
+export function FeaturedListingsSection({
+  properties,
+  searchQuery = "",
+}: FeaturedListingsSectionProps) {
   const displayList = properties.slice(0, 4);
+  const viewMoreHref = searchQuery
+    ? `/listings?search=${encodeURIComponent(searchQuery)}`
+    : "/listings";
 
   return (
     <section id="listings" className="bg-[var(--sandstone-off-white)] py-14 md:py-20 scroll-mt-20">
@@ -21,44 +26,32 @@ export function FeaturedListingsSection({ properties }: FeaturedListingsSectionP
           Curated listings in El Paso and the Southwest.
         </p>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6">
-          {displayList.map((property) => (
-            <Link
-              key={property.id}
-              href={`/listings/${property.id}`}
-              className="group block overflow-hidden rounded-2xl bg-white shadow-md transition hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-sand-gold)] focus-visible:ring-offset-2"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={property.image}
-                  alt={property.title}
-                  fill
-                  sizes="(max-width: 640px) 50vw, 25vw"
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-[var(--sandstone-navy)]/80 via-transparent to-transparent"
-                  aria-hidden
-                />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="font-heading text-lg font-bold text-white">
-                    {property.price}
-                  </p>
-                  <p className="text-sm text-white/90">{property.location}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {displayList.length === 0 ? (
+          <p className="mx-auto mt-10 max-w-xl rounded-xl border border-[var(--sandstone-navy)]/10 bg-white px-4 py-6 text-center text-sm text-[var(--sandstone-charcoal)]/85">
+            No listings matched <strong>{searchQuery}</strong>. Try a different search.
+          </p>
+        ) : (
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+            {displayList.map((property, index) => (
+              <ListingCard
+                key={property.id}
+                property={property}
+                priority={index < 2}
+              />
+            ))}
+          </div>
+        )}
 
-        <div className="mt-10 flex justify-center">
-          <a
-            href="#listings"
-            className="inline-flex w-full max-w-xs items-center justify-center rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3.5 font-semibold text-white transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-sand-gold)] focus-visible:ring-offset-2 sm:w-auto"
-          >
-            View More
-          </a>
-        </div>
+        {displayList.length > 0 && (
+          <div className="mt-10 flex justify-center">
+            <Link
+              href={viewMoreHref}
+              className="inline-flex w-full max-w-xs items-center justify-center rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3.5 font-semibold text-white transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sandstone-sand-gold)] focus-visible:ring-offset-2 sm:w-auto"
+            >
+              View More
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

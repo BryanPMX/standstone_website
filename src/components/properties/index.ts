@@ -1,2 +1,1 @@
-export { BentoGrid } from "./BentoGrid";
-export { PropertyCard } from "./PropertyCard";
+export { ListingCard } from "./ListingCard";

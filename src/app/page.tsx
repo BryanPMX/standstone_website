@@ -6,21 +6,32 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactForm } from "@/components/ContactForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { fetchMslPropertyCards } from "@/services";
+import { filterPropertyCards } from "@/lib";
 
-export default async function Home() {
+interface HomePageProps {
+  searchParams: Promise<{ search?: string }>;
+}
+
+export default async function Home({ searchParams }: HomePageProps) {
+  const params = await searchParams;
+  const searchQuery = (params.search ?? "").trim();
   const properties = await fetchMslPropertyCards();
+  const filteredProperties = filterPropertyCards(properties, searchQuery);
 
   return (
     <>
       <SiteHeader />
       <main className="min-h-screen">
-        <HeroSection />
-        <FeaturedListingsSection properties={properties} />
+        <HeroSection initialQuery={searchQuery} />
+        <FeaturedListingsSection
+          properties={filteredProperties}
+          searchQuery={searchQuery}
+        />
         <PrimaryActionTiles />
         <AboutSection />
         <ContactForm />
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </>
   );
 }
