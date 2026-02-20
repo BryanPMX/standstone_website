@@ -31,18 +31,18 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
 
   return (
     <section className="relative w-full overflow-hidden bg-[var(--sandstone-navy)]">
-      <div className="relative h-[62vh] min-h-[500px] w-full lg:h-[560px] lg:min-h-[560px]">
+      <div className="relative h-[46vh] min-h-[320px] w-full lg:h-[560px] lg:min-h-[560px]">
         <div className="relative h-full w-full">
           <Image
             src="/hero.webp"
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-[center_45%] lg:object-center"
             sizes="100vw"
             priority
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-[var(--sandstone-navy)]/70 via-[var(--sandstone-navy)]/30 to-[var(--sandstone-navy)]/12"
+            className="absolute inset-0 bg-gradient-to-t from-[var(--sandstone-navy)]/62 via-[var(--sandstone-navy)]/26 to-[var(--sandstone-navy)]/10 lg:from-[var(--sandstone-navy)]/70 lg:via-[var(--sandstone-navy)]/30 lg:to-[var(--sandstone-navy)]/12"
             aria-hidden
           />
 
@@ -70,45 +70,43 @@ export function HeroSection({ initialQuery = "" }: HeroSectionProps) {
               </button>
             </div>
           </form>
-
-          <div className="absolute inset-x-0 bottom-0 z-10 lg:hidden">
-            <div
-              className="h-28 bg-gradient-to-b from-transparent via-[var(--sandstone-navy)]/82 to-[var(--sandstone-navy)]"
-              aria-hidden
-            />
-            <div className="bg-[var(--sandstone-navy)] px-4 pb-6 pt-2">
-              <div className="pointer-events-none relative mx-auto h-[40px] w-[188px]">
-                <Image
-                  src="/mobile-logo-hero.webp"
-                  alt="Sandstone Real Estate Team"
-                  fill
-                  className="object-contain drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)]"
-                  sizes="188px"
-                  priority
-                />
-              </div>
-
-              <form onSubmit={handleSearch} className="mx-auto mt-4 w-full max-w-sm">
-                <input
-                  type="search"
-                  name="search"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder={SEARCH_PLACEHOLDER}
-                  className="w-full rounded-full border border-white/35 bg-white/96 px-5 py-3 text-[var(--sandstone-charcoal)] placeholder:text-[var(--sandstone-charcoal)]/58 shadow-[0_12px_30px_-16px_rgba(0,0,0,0.55)] focus:border-[var(--sandstone-sand-gold)] focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)]/35"
-                  aria-label="Search by address or neighborhood"
-                />
-
-                <button
-                  type="submit"
-                  className="mt-3 w-full rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3 font-semibold text-white transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)] focus:ring-offset-2 focus:ring-offset-[var(--sandstone-navy)]"
-                >
-                  Search
-                </button>
-              </form>
-            </div>
-          </div>
+          <div
+            className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-[var(--sandstone-navy)]/50 via-60% to-[var(--sandstone-navy)] lg:hidden"
+            aria-hidden
+          />
         </div>
+      </div>
+
+      <div className="bg-[var(--sandstone-navy)] px-4 pb-5 pt-0.5 lg:hidden">
+        <div className="pointer-events-none relative mx-auto h-[36px] w-[172px]">
+          <Image
+            src="/mobile-logo-hero.webp"
+            alt="Sandstone Real Estate Team"
+            fill
+            className="object-contain drop-shadow-[0_2px_3px_rgba(0,0,0,0.45)]"
+            sizes="172px"
+            priority
+          />
+        </div>
+
+        <form onSubmit={handleSearch} className="mx-auto mt-3 w-full max-w-sm">
+          <input
+            type="search"
+            name="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={SEARCH_PLACEHOLDER}
+            className="w-full rounded-full border border-white/35 bg-white/96 px-5 py-3 text-[var(--sandstone-charcoal)] placeholder:text-[var(--sandstone-charcoal)]/58 shadow-[0_12px_30px_-16px_rgba(0,0,0,0.55)] focus:border-[var(--sandstone-sand-gold)] focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)]/35"
+            aria-label="Search by address or neighborhood"
+          />
+
+          <button
+            type="submit"
+            className="mt-2.5 w-full rounded-full bg-[var(--sandstone-sand-gold)] px-6 py-3 font-semibold text-white transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--sandstone-sand-gold)] focus:ring-offset-2 focus:ring-offset-[var(--sandstone-navy)]"
+          >
+            Search
+          </button>
+        </form>
       </div>
     </section>
   );
